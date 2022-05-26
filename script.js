@@ -2,6 +2,9 @@
 /* Constants and variables */
 const container = document.getElementById("grid-container");
 
+const cells = container.childNodes;
+
+
 /* Display value for range slider*/
 function updateTextInput(val) {
   document.getElementById("textInput").value = val + ' x ' + val;
@@ -33,22 +36,23 @@ function makeRows(rows, cols) {
     cell.innerText = (c + 1);
     container.appendChild(cell).className = "grid-item"
   };
+
+  /* Hover effect for grid divs to change cover when mouse passes over */
+
+/*cells.forEach((cell) => {
+  cell.addEventListener('mouseenter', (e) => 
+  e.target.style.background = "red")
+});*/
+
 };
 
-/* Hover effect for grid divs to change cover when mouse passes over */
+function paintPixels() {
+  cells.forEach((cell) => {
+    cell.addEventListener('mouseenter', (e) => 
+    e.target.style.background = "red")
+  });
+}
 
-const cells = container.children;
-
-console.log(cells);
-
-
-const cellArray = [...cells];
-
-console.log(cellArray);
-
-cellArray.forEach((cell)=> {
-  console.log(cell);
-});
 
   // Load default grid on page
-//window.onload = makeDefaultGrid();
+window.onload = makeDefaultGrid();
