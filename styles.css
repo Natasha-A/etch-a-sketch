@@ -1,3 +1,10 @@
+
+/* CSS Variables */
+:root {
+  --grid-cols: 1;
+  --grid-rows: 1;
+}
+
 /* General styles */
 body {
   margin: 0px;
@@ -60,9 +67,11 @@ header {
 .content-bottom {
   display: flex;
   justify-content: center;
-  height: 100px;
+  height: 140px;
   border: 2px solid rgb(161, 161, 161);
-
+  flex-direction: column;
+  align-items: center;
+  font-size: 18px;
 }
 
 .content-bottom-slider {
@@ -70,6 +79,7 @@ header {
   align-self: center;
   justify-self: center;
   background: #ffffff00;
+  margin: 10px;
 }
 
 .content-space-top {
@@ -103,8 +113,31 @@ header {
   background-color: white;
   width: 420px;
   height: 420px;
- 
 }
+
+.mouseHover {
+  background-color: red;
+}
+
+/* Pixel Grid Styles */
+#grid-container {
+  display: grid;
+  gap: 0px;
+  grid-template-rows: repeat(var(--grid-rows), 1fr);
+  grid-template-columns: repeat(var(--grid-cols), 1fr);
+}
+
+#grid-container > div  {
+  text-align: center;
+  height: calc(420px/var(--grid-rows));
+  width: calc(420px/var(--grid-cols));
+  font-size: 10px;
+}
+
+.hoverGridItem {
+  background-color: red;
+}
+
 
 .grid-buttons {
   display: flex;
@@ -183,8 +216,8 @@ input[type="range"]::-webkit-slider-thumb {
   appearance: none;
   margin-top: -7px; /* Centers thumb on the track */
   background-color: #6f6f6f;
-  height: 1.5rem;
-  width: 1.5rem;  
+  height: 1.4rem;
+  width: 1.4rem;  
   border-radius: 50%;  
 }
 
