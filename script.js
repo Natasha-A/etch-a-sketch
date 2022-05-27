@@ -1,14 +1,22 @@
 
 /* Constants and variables */
 const container = document.getElementById("grid-container");
-
 const cells = container.childNodes;
+let colorMode = null;
+let colorPicked = "#d0a3f5"; // set default value
+let colorPicker = document.getElementById("paintColor");
+
+/* Watch for color picker value and set variable*/
+function watchColorPicker(event) {
+   colorPicked = event.target.value;
+}
+colorPicker.addEventListener("change", watchColorPicker, false);
 
 
 /* Display value for range slider*/
 function updateTextInput(val) {
   document.getElementById("textInput").value = val + ' x ' + val;
-
+  
   makeRows(val, val);
 }
 
@@ -37,20 +45,34 @@ function makeRows(rows, cols) {
     container.appendChild(cell).className = "grid-item"
   };
 
-  /* Hover effect for grid divs to change cover when mouse passes over */
-
-/*cells.forEach((cell) => {
-  cell.addEventListener('mouseenter', (e) => 
-  e.target.style.background = "red")
-});*/
-
+  /* Determine color mode */
+  if (colorMode === "paint") {
+    paintPixels();
+  }
+  console.log(colorMode);
 };
 
+
+/* Paints over pixel cells individually */
 function paintPixels() {
+
+  
   cells.forEach((cell) => {
     cell.addEventListener('mouseenter', (e) => 
-    e.target.style.background = "red")
+    e.target.style.background = colorPicked);
   });
+  colorMode = "paint";
+}
+
+/* Paint entire background */
+function paintBackground() {
+  cells.forEach((cell) => {
+    cell.addEventListener('click', ()=>{
+      cells.forEach((x) => {
+      x.style.background = colorPicked;
+      });
+    });
+});
 }
 
 

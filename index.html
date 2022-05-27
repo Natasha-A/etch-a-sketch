@@ -22,13 +22,15 @@
         <div class="grid-panel">
           <div class="grid-buttons">
             <button class="button-1" onclick="paintPixels()">P</button>
-            <button class="button-2">F</button>
+            <button class="button-2" onclick="paintBackground()">F</button>
             <button class="button-3">R</button>
             <button class="button-4">E</button>
           </div>
           <div class="grid-cpicker">
             <div class="cpicker">
-              <div class="cpicker-color1"></div>
+              <div class="cpicker-color1">
+                <input type="color" id="paintColor" value="#d0a3f5"/>
+              </div>
               <div class="cpicker-color2"></div>
             </div>
           </div>

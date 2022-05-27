@@ -225,3 +225,17 @@ input[type="range"]::-webkit-slider-thumb {
 input[type="range"]:active::-webkit-slider-thumb {
     outline: 4px solid #9b9b9b61;
 }
+
+/* Color Picker Styling */
+input[type="color"] {
+  -webkit-appearance: none;
+  border: none;
+}
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+  border: none;
+}
+input[type="color"]::-webkit-color-swatch {
+  border: none;
+  width: 24px;
+}
