@@ -5,6 +5,43 @@ const cells = container.childNodes;
 let colorMode = null;
 let colorPicked = "#d0a3f5"; // set default value
 let colorPicker = document.getElementById("paintColor");
+const buttons = document.querySelectorAll(".grid-buttons")
+const paintBtn = document.getElementById("button-1");
+const bgFillBtn = document.getElementById("button-2");
+
+
+btnClicked = "";
+
+
+
+
+
+/* Check for button clicked 
+
+buttons.forEach((button) => {
+  button.addEventListener('click', (e) => {
+    btnClicked = e.target.id;
+    console.log(btnClicked)
+
+    if (btnClicked === "button-1") {
+      console.log("Paint button pressed");
+      paintBtn.addEventListener('click', paintPixels);
+    } 
+
+    if (btnClicked === "button-2") {
+      console.log("Fill button pressed");
+      //console.log("event removed")
+      bgFillBtn.addEventListener('click', paintBackground);
+    } 
+  
+  });
+});
+*/
+
+
+paintBtn.addEventListener('click', paintPixels);
+
+bgFillBtn.addEventListener('click', paintBackground);
 
 /* Watch for color picker value and set variable*/
 function watchColorPicker(event) {
@@ -16,7 +53,6 @@ colorPicker.addEventListener("change", watchColorPicker, false);
 /* Display value for range slider*/
 function updateTextInput(val) {
   document.getElementById("textInput").value = val + ' x ' + val;
-  
   makeRows(val, val);
 }
 
@@ -43,37 +79,48 @@ function makeRows(rows, cols) {
     let cell = document.createElement("div");
     cell.innerText = (c + 1);
     container.appendChild(cell).className = "grid-item"
-  };
-
-  /* Determine color mode */
-  if (colorMode === "paint") {
-    paintPixels();
-  }
-  console.log(colorMode);
+  };  
 };
 
 
 /* Paints over pixel cells individually */
 function paintPixels() {
-
-  
+  console.log("painting pixels")
   cells.forEach((cell) => {
-    cell.addEventListener('mouseenter', (e) => 
-    e.target.style.background = colorPicked);
-  });
-  colorMode = "paint";
-}
+    cell.addEventListener('mouseenter', addColor)
+    cell.removeEventListener('click', paintBackground);
+
+    });
+  }
+
+  function addColor() {
+      event.target.style.backgroundColor = colorPicked;
+  }
+
+/*
+  setTimeout(() => {
+    cells.forEach((cell) => {
+      cell.removeEventListener('mouseenter', addColor);
+    });  
+    console.log("removed")
+  }, 2000)
+*
+  
 
 /* Paint entire background */
 function paintBackground() {
+  console.log("filling background")
   cells.forEach((cell) => {
-    cell.addEventListener('click', ()=>{
+    cell.removeEventListener('mouseenter', addColor);
+    cell.addEventListener('click', (e)=>{
       cells.forEach((x) => {
       x.style.background = colorPicked;
       });
     });
 });
 }
+
+
 
 
   // Load default grid on page

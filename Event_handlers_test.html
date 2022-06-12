@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id="btn-1">Button 1</button>
+  <button id="btn-2">Button 2</button>
+
+  <script>
+    let btn1 = document.getElementById("btn-1");
+    let btn2 = document.getElementById("btn-2");
+
+    btn1.addEventListener('click', e=> {
+      console.log(e.target)
+    });
+
+    btn2.addEventListener('click', e=> {
+      console.log(e.target)
+    });
+
+    function printHi() {
+      console.log("Hi")
+    }
+
+  </script>
+  
+</body>
+</html>
