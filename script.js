@@ -9,6 +9,8 @@ const buttons = document.querySelectorAll(".grid-buttons")
 const paintBtn = document.getElementById("button-1");
 const bgFillBtn = document.getElementById("button-2");
 const clearBtn = document.getElementById("btn-clear")
+
+
 // Rainbow Colours Arrays - using two selected palettes
 let rainbowColoursA = ["#007FAA","#059FCF", "#74DEF4", "#DDF3F1",
 "#05E3EF", "#04B9CE", "#0398A7", "#035D0A", "#2B8012", "#93CB4C",
@@ -20,24 +22,25 @@ let rainbowColoursB = ["#FCFB83","#FFE477", "#FFD12A", "#FEBE27",
 "#009EDC", "#0188D3", "#5AA9F0", "#279AFC", "#0066B1", "#063CB9", "#002C6F"]
 let rainbowColorsCombined = rainbowColoursA.concat(rainbowColoursB)
 
-
 // Button Panel Events
 btnClicked = "";
 
 
 buttons.forEach((button) => {
+
   button.addEventListener('click', (e) => {
     btnClicked = e.target.id;
-    console.log(btnClicked)
+    btn = e.target;
 
     if (btnClicked === "button-1") {
       console.log("Paint button pressed");
-      selectBtn(btnClicked)
+      selectBtn(btnClicked);
     }
 
     if (btnClicked === "button-2") {
       console.log("Fill button pressed");
       selectBtn(btnClicked)
+
     }
 
     if (btnClicked === "button-3") {
@@ -50,9 +53,19 @@ buttons.forEach((button) => {
       selectBtn(btnClicked)
     }
 
-    clearBtn.addEventListener('click', clearCells);
+    if (btnClicked === "button-5") {
+      console.log("grid-line toggle");
+      selectBtn(btnClicked)
+    }
 
+    if (clearBtn) {
+      clearBtn.addEventListener('click', clearCells);
+    
+    }
   });
+
+
+  
 });
 
 
@@ -77,7 +90,7 @@ function makeDefaultGrid() {
   container.replaceChildren();
   for (c = 0; c < (16 * 16); c++) {
     let cell = document.createElement("div");
-    cell.innerText = (c + 1);
+    //cell.innerText = (c + 1);
     container.appendChild(cell).className = "grid-item"
   };
 };
@@ -90,14 +103,14 @@ function makeRows(rows, cols) {
   container.replaceChildren();
   for (c = 0; c < (rows * cols); c++) {
     let cell = document.createElement("div");
-    cell.innerText = (c + 1);
+    //cell.innerText = (c + 1);
     container.appendChild(cell).className = "grid-item"
   };
 };
 
 
+let toggle = true;
 function selectBtn(btn) {
-
   // Paint cells
   if (btn === "button-1") {
     console.log("painting pixels option")
@@ -120,7 +133,6 @@ function selectBtn(btn) {
       cell.removeEventListener('mouseenter', paintCellRainbowColor);
       cell.removeEventListener('click', clearCells);
       cell.removeEventListener('mouseenter', eraseCell)
-
     })
   }
 
@@ -145,11 +157,10 @@ function selectBtn(btn) {
       cell.removeEventListener('mouseenter', paintCellRainbowColor);
       cell.removeEventListener('mouseenter', paintCellColor);
       cell.removeEventListener('click', paintBackground);
-      cell.removeEventListener('mouseenter', eraseCell)
-
-      
+      cell.removeEventListener('mouseenter', eraseCell)      
     })
   }
+
 
       // Erase cell colors
   if (btn == "button-4") {
@@ -159,11 +170,22 @@ function selectBtn(btn) {
       cell.removeEventListener('mouseenter', paintCellRainbowColor);
       cell.removeEventListener('mouseenter', paintCellColor);
       cell.removeEventListener('click', paintBackground);
-
     })
   }
+  if (btn == "button-5") {
+    if (toggle) {
+      addGridLines()
+      toggle = false;
+    } else {
+      removeGridLines()
+      toggle = true;
+    }
+  }
+
 
 }
+
+
 // Color Panel Functionalities 
 function paintCellColor() {
   event.target.style.backgroundColor = colorPicked;
@@ -183,6 +205,25 @@ function paintBackground() {
 function clearCells() {
   cells.forEach((cell) => {
     cell.style.background = "#FFFFFF"
+  });
+}
+
+function addGridLines() {
+
+  cells.forEach((cell) => {
+    cell.style.borderStyle = "solid";
+    cell.style.borderColor = "#404040";
+
+    cell.style.borderWidth = "1px";
+
+  });
+}
+
+function removeGridLines() {
+
+  cells.forEach((cell) => {
+    cell.style.borderStyle = "none";
+    cell.style.borderWidth = "none";
   });
 }
 

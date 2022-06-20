@@ -14,8 +14,39 @@ body {
 /* Typography */
  body {
   font-family: 'VT323', monospace;
-  font-size: 35px;
+  font-size: 40px;
+  background-color: rgb(189, 235, 219);
  }
+
+ a {
+  text-decoration: none;
+ }
+
+ /*  CSS Gradient Background */
+ .css-selector {
+  background: linear-gradient(154deg, #2cd0f5, #facdfd, #6d76ff);
+  background-size: 600% 600%;
+
+  -webkit-animation: AnimationName 7s ease infinite;
+  -moz-animation: AnimationName 7s ease infinite;
+  animation: AnimationName 7s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+  0%{background-position:0% 75%}
+  50%{background-position:100% 26%}
+  100%{background-position:0% 75%}
+}
+@-moz-keyframes AnimationName {
+  0%{background-position:0% 75%}
+  50%{background-position:100% 26%}
+  100%{background-position:0% 75%}
+}
+@keyframes AnimationName {
+  0%{background-position:0% 75%}
+  50%{background-position:100% 26%}
+  100%{background-position:0% 75%}
+}
 
 /* Containers and Headers */
 
@@ -28,33 +59,58 @@ body {
 
 }
 
+.container-box {
+  display: flex;
+  box-shadow: rgba(0, 0, 0, 0.1) 11px 11px 1px;
+  border-style: outset;
+  Border-color: #e1e1e1;
+  Border-width: 6px;
+
+}
+
 .container-box  {
   display: flex;
-  width: 540px;
-  height: 560px;
-  background-color: #D9D9D9;
+  width: 560px;
+  height: 590px;
+  background-color: #c9c9c9;
   flex-direction: column;
-  padding-top: 10px;
+  
 }
 
 header {
   display: flex;
   justify-content: stretch;
-
+  border-style: outset;
+  border-color: #c9c7c7;
+  border-left: none;
+  border-right: none;
+  padding: 5px;
 }
 
 .header-text {
   display: flex;
   flex: 1 1 auto;
   justify-content: center;
-  margin-left: 30px;
+  margin-left: 40px;
 }
 
- .btn-clear {
+ #btn-clear {
   display: flex;
   justify-self: center;
   align-self: center;
   margin-right: 10px;
+  width: 30px;
+  height: 30px;
+  background-image: url('/assets/xmark-solid.svg');
+  background-size: 24.5px 24px;
+  background-repeat: no-repeat;
+  padding: 0px;
+  background-position: center;
+}
+
+#btn-clear img {
+  justify-self: center;
+  align-self: center;
 }
 
 /* Content */
@@ -62,16 +118,21 @@ header {
 .content-main {
   display: flex;
   flex: 1 1 auto;
+  
 }
 
 .content-bottom {
   display: flex;
   justify-content: center;
   height: 140px;
-  border: 2px solid rgb(161, 161, 161);
   flex-direction: column;
   align-items: center;
   font-size: 18px;
+  border-style: outset;
+  border-color: #e9e8e8;
+  border-left: none;
+  border-right: none
+
 }
 
 .content-bottom-slider {
@@ -84,19 +145,21 @@ header {
 
 .content-space-top {
   height: 30px;
-  border-top: 5px solid rgb(143, 143, 143);
+  border-top: 5px solid #969696;
+
+
 }
 
 .content-space-bottom {
-  height: 30px;
-  border-bottom: 5px solid rgb(143, 143, 143);
+  height: 0px;
+  border-bottom: 5px solid #969696;
+  margin-top: 10px;
 }
 
 /* Grid */
 .grid-panel {
   display: flex;
   width: 16%;
-  border: 2px solid rgb(94, 94, 94);
   flex-direction: column;
   align-items: center;
 }
@@ -104,7 +167,6 @@ header {
 .grid-main {
   display: flex;
   flex: 1 1 auto;
-  border: 2px solid rgb(118, 118, 118);
   align-items: center;
   justify-content: flex-start;
 }
@@ -113,6 +175,9 @@ header {
   background-color: white;
   width: 420px;
   height: 420px;
+  border-style: inset;
+  border-width: 4px;
+
 }
 
 .mouseHover {
@@ -128,23 +193,37 @@ header {
 }
 
 #grid-container > div  {
+  box-sizing: border-box;
+  border-width: 0.001em;
+
   text-align: center;
   height: calc(420px/var(--grid-rows));
   width: calc(420px/var(--grid-cols));
   font-size: 10px;
 }
 
-.hoverGridItem {
-  background-color: red;
-}
 
-
+/* Grid Buttons */
 .grid-buttons {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-end;
   flex: 1;
+ 
+}
+
+.grid-buttons button {
+  background-size: 30.5px 30.5px;
+  background-repeat: no-repeat;
+  padding: 0px;
+  background-position:  center;
+  border-style: outset;
+}
+
+.grid-buttons img {
+  height: 25px;
+  
 }
 
 .grid-buttons > button, .cpicker {
@@ -152,13 +231,33 @@ header {
   height: 50px;
   margin-bottom: 20px;
   border: none;
+  border-style: outset;
+
 }
 
+.grid-buttons button:focus {
+  background-color: #d8d8d8;
+}
+#btn-clear:focus {
+  background-color: #d8d8d8;
+}
+
+button {
+  border: none;
+  border-radius: 3px;
+}
+
+#btn-clear {
+  border-style: outset;
+  border-color: rgb(221, 221, 221)
+
+}
 .grid-cpicker {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   align-items: flex-end;
+  
 }
 
 .grid-cpicker .cpicker {
@@ -172,17 +271,20 @@ header {
   display: flex;
   flex-direction: column;
   padding-top: 7px;
-  padding-left: 7px;
+  padding-left: 7px;  
+  border-style: outset;
 
-  
 }
 
 .cpicker > div {
+  border:none;
   display: flex;
   width: 25px;
   height: 25px;
   background-color: rgb(0, 0, 0);
   z-index: 2;
+  box-shadow: 2px 2px 3px  rgba(0, 0, 0, 0.2)
+  
 
 }
 
@@ -205,20 +307,30 @@ input[type="range"] {
 
 input[type="range"]::-webkit-slider-runnable-track {
   -webkit-appearance: none;
-  background: #ffffff;
+  background: #c9c9c9;
   height: 0.7rem;
   border-radius: 0.5rem;
   background-color: none;
+  border-style: inset;
+  border-radius: 10px;
+  border-width: 4px;  
+
+}
+
+#textInput {
+  font-size: 22px;
 }
 
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none; /* Override default look */
   appearance: none;
-  margin-top: -7px; /* Centers thumb on the track */
-  background-color: #6f6f6f;
+  margin-top: -9px; /* Centers thumb on the track */
+  background-color: #d5d5d5;
   height: 1.4rem;
   width: 1.4rem;  
-  border-radius: 50%;  
+  border-style: outset;
+
+
 }
 
 /***** Chrome, Safari, Opera, and Edge Chromium *****/
@@ -238,4 +350,19 @@ input[type="color"]::-webkit-color-swatch-wrapper {
 input[type="color"]::-webkit-color-swatch {
   border: none;
   width: 24px;
+}
+
+ img {
+  display: flex;
+  height: 27px;
+  margin: 10px;
+  
+}
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  margin-top: 20px;
+  color:#666666
 }

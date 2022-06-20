@@ -10,21 +10,23 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="css-selector">
   <div class="container-background">
+    <div class="container-section">
     <div class="container-box">
       <header>
         <div class="header-text">retro sketch</div>
-        <button id="btn-clear">x</button>
+        <button id="btn-clear"></button>
       </header>
       <div class="content-space-top"></div>
       <div class="content-main">
         <div class="grid-panel">
           <div class="grid-buttons">
-            <button id="button-1">P</button>
-            <button id="button-2">F</button>
-            <button id="button-3">R</button>
-            <button id="button-4">E</button>
+            <button id="button-1" style="background-image: url('/assets/paintbrush-solid.svg')"></button>
+            <button id="button-2" style="background-image: url('/assets/fill-drip-solid.svg')"></button>
+            <button id="button-3" style="background-image: url('/assets/rainbow-solid.svg')"></button>
+            <button id="button-4" style="background-image: url('/assets/eraser-solid.svg')"></button>
+            <button id="button-5" style="background-image: url('/assets/grid.svg')"></button>
           </div>
           <div class="grid-cpicker">
             <div class="cpicker">
@@ -48,8 +50,13 @@
           <input type="range" min="10" max="64" value="16" class="slider" name="rangeVal" onchange="updateTextInput(this.value);return false">
         </div>
         <output type="text" id="textInput" value="">16 x 16</output>
+      </div>      
       </div>
-      </div>
+      <a  href="https://github.com/Natasha-A">
+      <footer>
+        <img src="/assets/github.png"/>
+        created by @natasha-a</footer></a>
+    </div>
     </div>
   </div>
   </body>
