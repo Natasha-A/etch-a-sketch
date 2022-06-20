@@ -212,7 +212,7 @@ function addGridLines() {
 
   cells.forEach((cell) => {
     cell.style.borderStyle = "solid";
-    cell.style.borderColor = "#404040";
+    cell.style.borderColor = "#adacac";
 
     cell.style.borderWidth = "1px";
 
