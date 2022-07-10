@@ -70,8 +70,8 @@ body {
 
 .container-box  {
   display: flex;
-  width: 560px;
-  height: 590px;
+  width: 700px;
+  height: 750px;
   background-color: #c9c9c9;
   flex-direction: column;
   
@@ -101,7 +101,7 @@ header {
   margin-right: 10px;
   width: 30px;
   height: 30px;
-  background-image: url('/assets/xmark-solid.svg');
+  background-image: url('assets/xmark-solid.svg');
   background-size: 24.5px 24px;
   background-repeat: no-repeat;
   padding: 0px;
@@ -174,8 +174,8 @@ header {
 
 .grid-main-box {
   background-color: white;
-  width: 420px;
-  height: 420px;
+  width: 500px;
+  height: 500px;
   border-style: inset;
   border-width: 4px;
 
@@ -190,17 +190,20 @@ header {
   display: grid;
   gap: 0px;
   grid-template-rows: repeat(var(--grid-rows), 1fr);
-  grid-template-columns: repeat(var(--grid-cols), 1fr);
+  grid-template-columns: repeat(var(--grid-cols), 1fr);margin:-1px 0 0 -1px;    float: left; overflow: hidden; 
+  border-width: 1px 0 0 1px;
+
 }
 
 #grid-container > div  {
   box-sizing: border-box;
   border-width: 0.001em;
-
   text-align: center;
-  height: calc(420px/var(--grid-rows));
-  width: calc(420px/var(--grid-cols));
-  font-size: 10px;
+  height: calc(500px/var(--grid-rows));
+  width: calc(500px/var(--grid-cols));
+  font-size: 10px;       float: left; overflow: hidden; 
+ 
+
 }
 
 

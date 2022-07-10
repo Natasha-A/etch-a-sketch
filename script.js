@@ -80,6 +80,7 @@ colorPicker.addEventListener("change", watchColorPicker, false);
 function updateTextInput(val) {
   document.getElementById("textInput").value = val + ' x ' + val;
   makeRows(val, val);
+  addGridLines()
 }
 
 /* Default grid */
@@ -145,7 +146,6 @@ function selectBtn(btn) {
       cell.removeEventListener('click', paintBackground);
       cell.removeEventListener('click', clearCells);
       cell.removeEventListener('mouseenter', eraseCell)
-
     })
   }
 
@@ -213,8 +213,6 @@ function addGridLines() {
   cells.forEach((cell) => {
     cell.style.borderStyle = "solid";
     cell.style.borderColor = "#adacac";
-
-    cell.style.borderWidth = "1px";
 
   });
 }
